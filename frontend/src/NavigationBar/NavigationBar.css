@@ -1,0 +1,152 @@
+/* Navigation Bar Styles */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 2px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-spacer {
+  flex: 0 0 150px;
+}
+
+.links {
+  flex: 1;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-link,
+.navbar-link-active {
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar-link {
+  color: #6b7280;
+}
+
+.navbar-link:hover {
+  color: #374151;
+  background-color: #f3f4f6;
+}
+
+.navbar-link-active {
+  color: #2563eb;
+  background-color: #dbeafe;
+}
+
+.sign-in-button {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navbar-link-sign-in,
+.navbar-link-sign-up {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar-link-sign-in {
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.navbar-link-sign-in:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.navbar-link-sign-up {
+  color: #ffffff;
+  background-color: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+.navbar-link-sign-up:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .nav-bar {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .nav-spacer {
+    flex: 0 0 100px;
+  }
+
+  .links {
+    gap: 1.5rem;
+  }
+
+  .navbar-link,
+  .navbar-link-active {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .navbar-link-sign-in,
+  .navbar-link-sign-up {
+    font-size: 0.95rem;
+    padding: 0.5rem 1.2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .nav-bar {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .nav-spacer {
+    display: none;
+  }
+
+  .links {
+    order: 2;
+    width: 100%;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+
+  .sign-in-button {
+    order: 1;
+    margin-left: auto;
+    gap: 0.5rem;
+  }
+
+  .navbar-link,
+  .navbar-link-active {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .navbar-link-sign-in,
+  .navbar-link-sign-up {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}
