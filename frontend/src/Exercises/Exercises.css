@@ -1,0 +1,193 @@
+/* Exercise Page */
+.exercise-page {
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8edf4 100%);
+  padding: 2.5rem 2rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 2rem;
+}
+
+/* Add Exercise Button */
+.add-exercise-button {
+  grid-column: 1 / -1;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6b7280;
+  background-color: #ffffff;
+  border: 2px dashed #d1d5db;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.add-exercise-button:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+/* Exercise List */
+.exercise-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1300px;
+}
+
+/* Exercise Card */
+.exercise-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 8px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.exercise-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08), 0 16px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Card Header */
+.exercise-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.exercise-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.pr-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: #fef9c3;
+  color: #854d0e;
+  border: 1px solid #fde68a;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Stats Section */
+.exercise-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.stat-block {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stat-separator {
+  width: 100%;
+  height: 1px;
+  background-color: #e5e7eb;
+  flex-shrink: 0;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  min-width: 32px;
+}
+
+.stat-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.stat-divider {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+
+/* Log Button */
+.log-button {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2563eb;
+  background-color: #eff6ff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.log-button:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .exercise-page {
+    padding: 2rem 1.5rem;
+  }
+
+  .exercise-list {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .exercise-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .exercise-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .exercise-card {
+    padding: 1.5rem;
+  }
+
+  .exercise-name {
+    font-size: 1.15rem;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
+  }
+}
