@@ -30,7 +30,7 @@ const NavigationBar = () => {
                         Exercises
                     </Link>
 
-                    <Link className={location.pathname.startsWith("/Workouts") ? "navbar-link-active" : "navbar-link"} to="/workouts">
+                    <Link className={location.pathname.startsWith("/workouts") ? "navbar-link-active" : "navbar-link"} to="/workouts">
                         Workouts
                     </Link>
 

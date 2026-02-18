@@ -18,14 +18,42 @@ const SignIn = () => {
         e.preventDefault();
         try {
             await signIn({username, password})
-            setMessage("sign in succesfull")
+            setMessage("sign in successful")
             const userAttributes = await fetchUserAttributes();
 
+            const userId = userAttributes.sub;
+
             dispatch({type: "SET_USER", payload: {
-                userId: userAttributes.sub,
+                userId: userId,
                 email: userAttributes.email,
                 ...userAttributes
             }})
+            
+            // Fetch exercises after sign in
+            const response = await fetch(`http://localhost:3000/user/exercises/${userId}`);
+            if (response.ok) {
+                const data = await response.json();
+                dispatch({
+                    type: 'SET_EXERCISES',
+                    payload: data.exercises
+                });
+            } else {
+                console.error("Failed to fetch exercises");
+            }
+
+            const result = await fetch(`http://localhost:3000/user/workouts/${userId}`);
+            if (result.ok) {
+                const data = await result.json();
+                console.log(data)
+                dispatch({
+                    type: 'SET_WORKOUTS',
+                    payload: data.workouts
+                });
+            } else {
+                console.error("Failed to fetch workouts");
+            }
+            
+            console.log(userId)
             navigate("/")
 
         } catch (error) {

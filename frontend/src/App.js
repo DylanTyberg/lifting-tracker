@@ -6,6 +6,8 @@ import SignUp from './Authentication/SignUp/SignUp';
 import ConfirmEmail from './Authentication/ConfirmEmail/ConfirmEmail';
 import SignIn from './Authentication/SignIn/SignIn';
 import Exercises from './Exercises/Exercises';
+import Workouts from './Workouts/Workouts';
+import Workout from './Workouts/Workout/Workout';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/" element={<NavigationBar/>}>
           <Route index element={<Home/>}/>
           <Route path='exercises' element={<Exercises/>}/>
+          <Route path = 'workouts' element={<Workouts/>}/>
+          <Route path = "/workouts/workout" element={<Workout/>}/>
         </Route>
         <Route path="sign-up" element={<SignUp/>}/>
         <Route path="sign-in" element={<SignIn/>}/>
