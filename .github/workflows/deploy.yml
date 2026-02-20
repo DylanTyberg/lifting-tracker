@@ -41,11 +41,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1️⃣ Checkout code
+
     - name: Checkout
       uses: actions/checkout@v3
 
-    # 2️⃣ Configure AWS credentials
+
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
@@ -53,18 +53,17 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-    # 3️⃣ Login to ECR
+
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    # 4️⃣ Build Docker image
+ 
     - name: Build Docker image
       run: |
         docker build -t ${{ secrets.ECR_REPOSITORY }} .
       working-directory: backend
 
-    # 5️⃣ Tag image with ECR URI
     - name: Tag Docker image
       run: |
         IMAGE_URI="${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:latest"
@@ -72,17 +71,17 @@ jobs:
         echo "IMAGE_URI=$IMAGE_URI" >> $GITHUB_ENV
       working-directory: backend
 
-    # 6️⃣ Push Docker image to ECR
+    
     - name: Push Docker image
       run: |
         docker push $IMAGE_URI
       working-directory: backend
 
-    # 7️⃣ (Optional) Deploy to ECS
+   
     - name: Update ECS Service
       run: |
         aws ecs update-service \
-          --cluster my-cluster \
-          --service my-backend-service \
+          --cluster ${{ secrets.ECS_CLUSTER }} \
+            --service ${{ secrets.FARGATE_SERVICE }} \
           --force-new-deployment
       working-directory: backend
