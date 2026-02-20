@@ -52,6 +52,18 @@ const SignIn = () => {
             } else {
                 console.error("Failed to fetch workouts");
             }
+
+            const res = await fetch(`http://localhost:3000/user/workouts/templates/${userId}`);
+            if (res.ok) {
+                const data = await res.json();
+                console.log(data)
+                dispatch({
+                    type: 'SET_TEMPLATES',
+                    payload: data.templates
+                });
+            } else {
+                console.error("Failed to fetch workouts");
+            }
             
             console.log(userId)
             navigate("/")

@@ -322,3 +322,358 @@
     margin-bottom: 1.5rem;
   }
 }
+
+/* Add Template Modal */
+.add-template-modal {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 550px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Template Exercises Section */
+.template-exercises-section {
+  margin-top: 1.5rem;
+}
+
+/* Empty Exercises State */
+.empty-exercises {
+  background-color: #f9fafb;
+  border: 2px dashed #e5e7eb;
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.empty-exercises-text {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Selected Exercises List */
+.selected-exercises-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.selected-exercise-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.selected-exercise-item:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.selected-exercise-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1f2937;
+  flex: 1;
+}
+
+.remove-selected-exercise {
+  font-size: 1rem;
+  color: #9ca3af;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.remove-selected-exercise:hover {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+/* Add Exercise to Template Button */
+.add-exercise-to-template-button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6b7280;
+  background-color: #ffffff;
+  border: 2px dashed #d1d5db;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-exercise-to-template-button:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+/* Scrollbar Styling for Selected Exercises */
+.selected-exercises-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.selected-exercises-list::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 3px;
+}
+
+.selected-exercises-list::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.selected-exercises-list::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Nested Modal - Slightly Darker Overlay */
+.modal-overlay + .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .add-template-modal {
+    max-width: 500px;
+  }
+
+  .selected-exercises-list {
+    max-height: 200px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .add-template-modal {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .empty-exercises {
+    padding: 1.5rem 1rem;
+  }
+
+  .selected-exercises-list {
+    max-height: 180px;
+  }
+
+  .selected-exercise-item {
+    padding: 0.65rem 0.875rem;
+  }
+}
+
+/* View Workout Modal */
+.view-workout-modal {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* View Workout Exercises */
+.view-workout-exercises {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* View Exercise Card */
+.view-exercise-card {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.view-exercise-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+}
+
+/* View Sets List */
+.view-sets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.view-set-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.view-set-number {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+  min-width: 50px;
+}
+
+.view-set-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.view-set-weight,
+.view-set-reps {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.view-set-divider {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* View Exercise Summary */
+.view-exercise-summary {
+  display: flex;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.summary-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.summary-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.summary-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* Repeat Button in View Modal */
+.view-workout-modal .modal-save-button {
+  background-color: #059669;
+  border-color: #059669;
+}
+
+.view-workout-modal .modal-save-button:hover {
+  background-color: #047857;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .view-workout-modal {
+    max-width: 520px;
+  }
+
+  .view-exercise-card {
+    padding: 1rem;
+  }
+
+  .view-set-row {
+    padding: 0.6rem 0.875rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .view-workout-modal {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .view-exercise-card {
+    padding: 1rem;
+  }
+
+  .view-exercise-name {
+    font-size: 1.05rem;
+  }
+
+  .view-set-row {
+    flex-wrap: wrap;
+    padding: 0.65rem 0.875rem;
+  }
+
+  .view-set-number {
+    width: 100%;
+    margin-bottom: 0.35rem;
+  }
+
+  .view-set-details {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .view-exercise-summary {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .summary-stat {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

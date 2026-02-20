@@ -8,13 +8,15 @@ const savedState = JSON.parse(localStorage.getItem("userState"))
 const initialState = savedState || {
     user: null,
     exercises: {},
-    workouts: []
+    workouts: [],
+    templates: []
 }
 
 const logoutState = {
     user: null,
     exercises: {},
-    workouts: []
+    workouts: [],
+    templates: []
 }
 
 const userReducer = (state, action) => {
@@ -25,6 +27,8 @@ const userReducer = (state, action) => {
             return {...state, exercises: action.payload}
         case "SET_WORKOUTS":
             return {...state, workouts: action.payload}
+        case "SET_TEMPLATES":
+            return {...state, templates: action.payload}
         case "ADD_EXERCISE_ENTRY":
             // Add a new workout entry to an existing exercise
             const { exerciseName, entry } = action.payload;
@@ -43,6 +47,26 @@ const userReducer = (state, action) => {
             return {
                 ...state,
                 workouts: [action.payload, ...state.workouts]
+            }
+        case "ADD_TEMPLATE":
+            // Add a new template
+            return {
+                ...state,
+                templates: [...state.templates, action.payload]
+            }
+        case "UPDATE_TEMPLATE":
+            // Update an existing template
+            return {
+                ...state,
+                templates: state.templates.map(template => 
+                    template.id === action.payload.id ? action.payload : template
+                )
+            }
+        case "REMOVE_TEMPLATE":
+            // Remove a template by id
+            return {
+                ...state,
+                templates: state.templates.filter(template => template.id !== action.payload)
             }
         case "LOGOUT":
             return {...logoutState};
@@ -96,6 +120,16 @@ export const UserProvider = ({children}) => {
                     dispatch({
                         type: 'SET_WORKOUTS',
                         payload: workoutsData.workouts
+                    });
+                }
+
+                // Fetch templates after setting user
+                const templatesResponse = await fetch(`http://localhost:3000/user/workouts/templates/${userId}`);
+                if (templatesResponse.ok) {
+                    const templatesData = await templatesResponse.json();
+                    dispatch({
+                        type: 'SET_TEMPLATES',
+                        payload: templatesData.templates
                     });
                 }
                 

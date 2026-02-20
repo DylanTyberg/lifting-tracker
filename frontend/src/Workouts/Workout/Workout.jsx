@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../../Contexts/UserContext";
+import { useLocation } from "react-router-dom";
 import "../Workout/Workout.css"
 
 const Workout = () => {
     const { state, dispatch } = useUser();
+
+    const location = useLocation();
     
     const [availableExercises, setAvailableExercises] = useState([]);
     const [historyData, setHistoryData] = useState([]);
@@ -12,8 +15,24 @@ const Workout = () => {
     const [logSetModal, setLogSetModal] = useState({ open: false, exerciseIndex: null });
     const [modalSets, setModalSets] = useState([{ weight: 0, reps: 0 }]);
 
+
+    console.log("log", location.state.exercises)
     useEffect(() => {
         getExercises();
+        if (!location.state?.exercises) return;
+
+        const newExercises = location.state.exercises.map(exerciseName => {
+            const exerciseHistory = historyData.find(ex => ex.name === exerciseName);
+
+            return {
+                name: exerciseName,
+                sets: [],
+                last: exerciseHistory?.last || { weight: null, reps: null },
+                best: exerciseHistory?.best || { weight: null, reps: null }
+            };
+        });
+
+        setWorkoutExercises(newExercises);
     }, [])
 
     const getExercises = async () => {

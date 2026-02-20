@@ -14,6 +14,10 @@ router.put("/user/exercises/:userId", exercisesController.addUserExercise)
 router.put("/user/workouts/:userId", workoutsController.addUserWorkout)
 router.get("/user/workouts/:userId", workoutsController.getUserWorkouts)
 
+router.put("/user/workouts/templates/:userId", workoutsController.addUserTemplate)
+router.get("/user/workouts/templates/:userId", workoutsController.getUserTemplates)
+router.delete("/user/workouts/templates/:userId", workoutsController.deleteTemplate)
+
 
 
 module.exports = router;
