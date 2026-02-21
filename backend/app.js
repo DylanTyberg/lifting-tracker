@@ -29,9 +29,11 @@ app.use('/api', exercisesRouter);
 
 
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).json({ 
+    error: err.message || 'Internal Server Error' 
+  });
 });
 
 // error handler
