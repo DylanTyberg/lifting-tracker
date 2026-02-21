@@ -16,7 +16,7 @@ const Workout = () => {
     const [modalSets, setModalSets] = useState([{ weight: 0, reps: 0 }]);
 
 
-    console.log("log", location.state.exercises)
+    
     useEffect(() => {
         getExercises();
         if (!location.state?.exercises) return;
