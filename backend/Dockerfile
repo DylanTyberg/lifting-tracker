@@ -12,7 +12,7 @@ RUN npm ci --only=production
 
 # 5️⃣ Copy rest of the backend code
 COPY . .
-
+ENV PORT=80
 # 6️⃣ Expose the port your app will run on
 EXPOSE 80
 
