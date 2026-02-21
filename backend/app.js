@@ -12,7 +12,7 @@ var exercisesRouter = require('./routes/exercises');
 var app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3001',
+    origin: 'http://lifting-tracker.htytun.com',
     methods: ['GET','POST','PUT','DELETE'],
     allowedHeaders: ['Content-Type','Authorization']
 }));
