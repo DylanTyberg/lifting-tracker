@@ -104,7 +104,7 @@ export const UserProvider = ({children}) => {
                 });
                 
                 // Fetch exercises after setting user
-                const exercisesResponse = await fetch(`http://localhost:3000/user/exercises/${userId}`);
+                const exercisesResponse = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/exercises/${userId}`);
                 if (exercisesResponse.ok) {
                     const exercisesData = await exercisesResponse.json();
                     dispatch({
@@ -114,7 +114,7 @@ export const UserProvider = ({children}) => {
                 }
 
                 // Fetch workouts after setting user
-                const workoutsResponse = await fetch(`http://localhost:3000/user/workouts/${userId}`);
+                const workoutsResponse = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/workouts/${userId}`);
                 if (workoutsResponse.ok) {
                     const workoutsData = await workoutsResponse.json();
                     dispatch({
@@ -124,7 +124,7 @@ export const UserProvider = ({children}) => {
                 }
 
                 // Fetch templates after setting user
-                const templatesResponse = await fetch(`http://localhost:3000/user/workouts/templates/${userId}`);
+                const templatesResponse = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/workouts/templates/${userId}`);
                 if (templatesResponse.ok) {
                     const templatesData = await templatesResponse.json();
                     dispatch({

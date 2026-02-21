@@ -30,7 +30,7 @@ const SignIn = () => {
             }})
             
             // Fetch exercises after sign in
-            const response = await fetch(`http://localhost:3000/user/exercises/${userId}`);
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/exercises/${userId}`);
             if (response.ok) {
                 const data = await response.json();
                 dispatch({
@@ -41,7 +41,7 @@ const SignIn = () => {
                 console.error("Failed to fetch exercises");
             }
 
-            const result = await fetch(`http://localhost:3000/user/workouts/${userId}`);
+            const result = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/workouts/${userId}`);
             if (result.ok) {
                 const data = await result.json();
                 console.log(data)
@@ -53,7 +53,7 @@ const SignIn = () => {
                 console.error("Failed to fetch workouts");
             }
 
-            const res = await fetch(`http://localhost:3000/user/workouts/templates/${userId}`);
+            const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/workouts/templates/${userId}`);
             if (res.ok) {
                 const data = await res.json();
                 console.log(data)

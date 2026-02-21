@@ -37,7 +37,7 @@ const Workout = () => {
 
     const getExercises = async () => {
         try {
-            const response = await fetch("http://localhost:3000/exercises", {
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/exercises`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -140,7 +140,7 @@ const Workout = () => {
         
         try {
             // Save the entire workout
-            const workoutResponse = await fetch(`http://localhost:3000/user/workouts/${state.user.userId}`, {
+            const workoutResponse = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/workouts/${state.user.userId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -159,7 +159,7 @@ const Workout = () => {
             // Save each exercise with sets to exercises table (for history tracking)
             for (const exercise of workoutExercises) {
                 if (exercise.sets.length > 0) {
-                    await fetch(`http://localhost:3000/user/exercises/${state.user.userId}`, {
+                    await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/exercises/${state.user.userId}`, {
                         method: "PUT",
                         headers: {
                             "Content-Type": "application/json"

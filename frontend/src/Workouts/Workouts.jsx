@@ -30,7 +30,7 @@ const Workouts = () => {
     
     const getExercises = async () => {
         try {
-            const response = await fetch("http://localhost:3000/exercises", {
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/exercises`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -46,7 +46,7 @@ const Workouts = () => {
 
     const addTemplate = async () => {
         try {
-            const data = await fetch(`http://localhost:3000/user/workouts/templates/${state.user.userId}`, {
+            const data = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/workouts/templates/${state.user.userId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"

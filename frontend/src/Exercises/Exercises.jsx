@@ -31,7 +31,7 @@ const Exercises = () => {
 
     const getExercises = async () => {
         try {
-            const response = await fetch("http://localhost:3000/exercises", {
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/exercises`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -97,7 +97,7 @@ const Exercises = () => {
     const addExercise = async () => {
         const today = new Date().toISOString().split('T')[0];
         try {
-            const response = await fetch(`http://localhost:3000/user/exercises/${state.user.userId}`, 
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/exercises/${state.user.userId}`, 
                 {
                     method: "PUT",
                     headers: {
@@ -150,7 +150,7 @@ const Exercises = () => {
             return;
         }
         try {
-            const result = await fetch(`http://localhost:3000/exercises/${addExerciseModalName}`,
+            const result = await fetch(`${process.env.REACT_APP_API_BASE_URL}/exercises/${addExerciseModalName}`,
                 {
                     method: "PUT",
                     headers: {

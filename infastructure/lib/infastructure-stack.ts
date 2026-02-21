@@ -65,7 +65,7 @@ export class ContainerWebAppStack extends cdk.Stack {
     })
 
     container.addPortMappings({
-      containerPort:props.containerPort || 3000,
+      containerPort: props.containerPort || 80,
       protocol: ecs.Protocol.TCP,
     })
 
@@ -75,11 +75,38 @@ export class ContainerWebAppStack extends cdk.Stack {
       allowAllOutbound: true,
     })
 
-    serviceSG.addIngressRule(
+
+    const albSG = new ec2.SecurityGroup(this, "AlbSecurityGroup", {
+      vpc,
+      description: "security group for ALB",
+      allowAllOutbound: true,
+    })
+
+    albSG.addIngressRule(
       ec2.Peer.anyIpv4(),
-      ec2.Port.tcp(props.containerPort || 3000),
-      "Allow inbound traffic"
+      ec2.Port.tcp(80),
+      "Allow HTTP inbound"
     )
+
+    serviceSG.addIngressRule(
+      albSG,
+      ec2.Port.tcp(props.containerPort || 80),
+      "Allow inbound from ALB only"
+    )
+
+    const alb = new elbv2.ApplicationLoadBalancer(this, "AppLoadBalancer", {
+      vpc: vpc,
+      internetFacing: true,
+      securityGroup: albSG
+    })
+
+    const listener = alb.addListener("HttpListener", {
+      port: 80,
+      protocol: elbv2.ApplicationProtocol.HTTP,
+    })
+
+    
+
 
     const service = new ecs.FargateService(this, "AppService", {
       cluster: cluster,
@@ -99,6 +126,24 @@ export class ContainerWebAppStack extends cdk.Stack {
 
     })
 
+    listener.addTargets("AppTargets", {
+      port: props.containerPort || 80,
+      protocol: elbv2.ApplicationProtocol.HTTP,
+      targets: [service],
+      healthCheck: {
+        path: props.healthCheckPath || '/',
+        interval: cdk.Duration.seconds(30),
+        timeout: cdk.Duration.seconds(5),
+        healthyThresholdCount: 2,
+        unhealthyThresholdCount: 3,
+      }
+    })
+
+
+    new cdk.CfnOutput(this, "LoadBalancerUrl", {
+      value: `http://${alb.loadBalancerDnsName}`,
+      description: "Application URL",
+    })
     
 
     new cdk.CfnOutput(this, "ClusterName", {
