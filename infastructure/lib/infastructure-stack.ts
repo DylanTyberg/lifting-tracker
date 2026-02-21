@@ -5,6 +5,7 @@ import * as ecs from "aws-cdk-lib/aws-ecs";
 import * as logs from "aws-cdk-lib/aws-logs";
 import * as elbv2 from "aws-cdk-lib/aws-elasticloadbalancingv2";
 import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
+import * as iam from "aws-cdk-lib/aws-iam";
 
 interface ContainerWebAppStackProps extends cdk.StackProps {
   environment: "dev" | "prod";
@@ -36,7 +37,13 @@ export class ContainerWebAppStack extends cdk.Stack {
 
     const taskDefinition = new ecs.FargateTaskDefinition(this, "AppTaskDef", {
       cpu: 256,
-      memoryLimitMiB: 512
+      memoryLimitMiB: 512,
+      executionRole: new iam.Role(this, "ExecutionRole", {
+        assumedBy: new iam.ServicePrincipal("ecs-tasks.amazonaws.com"),
+        managedPolicies: [
+          iam.ManagedPolicy.fromAwsManagedPolicyName("service-role/AmazonECSTaskExecutionRolePolicy")
+        ]
+      })
     })
 
    

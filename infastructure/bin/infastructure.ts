@@ -6,7 +6,7 @@ const app = new cdk.App();
 
 new ContainerWebAppStack(app, "DevContainerApp", {
   environment: "dev",
-  containerImage: "nginx:latest",
+  containerImage: "183494328841.dkr.ecr.us-east-1.amazonaws.com/lifting-tracker-ecr:latest",
   containerPort: 80,
   desiredCount: 1,
   env: {
