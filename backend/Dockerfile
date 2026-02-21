@@ -16,5 +16,4 @@ COPY . .
 # 6️⃣ Expose the port your app will run on
 EXPOSE 80
 
-# 7️⃣ Start the app
 CMD ["node", "app.js"]
