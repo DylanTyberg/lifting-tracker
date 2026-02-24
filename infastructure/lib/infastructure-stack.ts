@@ -48,13 +48,7 @@ export class ContainerWebAppStack extends cdk.Stack {
 
    
 
-    const database = new dynamodb.Table(this, "ItemsTable", {
-      partitionKey: {name: 'id', type: dynamodb.AttributeType.STRING},
-      sortKey: {name: "sort_key", type: dynamodb.AttributeType.STRING},
-      tableName: "LiftingTable",
-      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
-    })
+    const database = dynamodb.Table.fromTableName(this, "ItemsTable", "LiftingTable");
 
     database.grantReadWriteData(taskDefinition.taskRole);
 

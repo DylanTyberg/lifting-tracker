@@ -9,6 +9,7 @@ new ContainerWebAppStack(app, "DevContainerApp", {
   containerImage: "183494328841.dkr.ecr.us-east-1.amazonaws.com/lifting-tracker-ecr:latest",
   containerPort: 80,
   desiredCount: 1,
+  healthCheckPath: '/api/health',
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
     region: process.env.CDK_DEFAULT_REGION
