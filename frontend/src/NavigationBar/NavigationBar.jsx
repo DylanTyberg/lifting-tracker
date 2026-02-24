@@ -23,10 +23,6 @@ const NavigationBar = () => {
                 <div className="nav-spacer"></div>
                 <div className="links">
                     <Link className={location.pathname === "/" ? "navbar-link-active" : "navbar-link"} to="/">
-                        Home
-                    </Link>
-                    
-                    <Link className={location.pathname.startsWith("/exercises") ? "navbar-link-active" : "navbar-link"} to="/exercises">
                         Exercises
                     </Link>
 
