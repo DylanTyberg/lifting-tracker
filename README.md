@@ -21,7 +21,7 @@ DNS is handled by **Route 53**, routing traffic to **CloudFront** which serves t
 
 ## Features
 
-- Log sets with weight and reps per exercise
+- Log exercise sets individually or as part of a workout
 - Track last and best performance for each exercise
 - Create and reuse workout templates
 - View recent workout history
